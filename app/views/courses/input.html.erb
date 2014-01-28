@@ -1,2 +1,22 @@
-<h1>Course Input Page</h1>
-<p></p>
+<% provide(:title, 'Input') %>
+<h1>Input</h1>
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@user) do |f| %>
+
+	<%= f.label :Type_of_institution %>
+	<%= f.text_field :institutiontype %>
+
+	<%= f.label :institution %>
+	<%= f.text_field :institution %>
+
+	<%= f.label :fulltime_part_time %>
+	<%= f.password_field :ftpt %>
+
+	<%= f.label :duration, %>
+	<%= f.password_field :duration %>
+
+	<%= f.submit "ADD record", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>

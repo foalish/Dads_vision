@@ -1,8 +1,20 @@
 DadsVision::Application.routes.draw do
-  get "users/new"
+  get "static_pages/home"
+  get "static_pages/help"
+  get "static_pages/about"
+
+  get "employers/new"
+  get "jobs/new"
+  resources :courses
+  root  'staticpages#home'
+
+  
+ 
   get "courses/new"
-  get "courses/home"
   get "courses/input"
+
+  match '/signup', to: 'users#new', via: 'get'
+  
 
 
   # The priority is based upon order of creation: first created -> highest priority.
