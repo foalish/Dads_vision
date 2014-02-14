@@ -1,0 +1,36 @@
+<% provide(:title, 'Edit course') %>
+<h1>Edit the course below</h1>
+
+<div class="row">
+	<div class="span3 offset3">
+		<%= form_for(@course) do |f| %>
+
+	<%= f.label :Type_of_Institution %>
+	<%= f.text_field :institutiontype %>
+    
+	<%= f.label :Institution %>
+	<%= f.text_field :institution %>
+
+	<%= f.label :Full_time_or_Part_time %>
+	<%= f.password_field :ftpt %>
+
+	<%= f.label :Course_Duration %>   
+	<%= f.password_field :duration %>  
+
+	<%= f.label :Department %>
+	<%= f.text_field :dept %>
+
+	<%= f.label :Course_name %>
+	<%= f.text_field :course %>
+
+	<%= f.label :Course_Code %>
+	<%= f.password_field :code %>
+
+	<%= f.label :Course_Description %>
+	<%= f.password_field :description %>
+
+	<%= f.submit "ADD record", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>
+

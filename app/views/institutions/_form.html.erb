@@ -1,0 +1,27 @@
+<%= form_for(@institution) do |f| %>
+  <% if @institution.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@institution.errors.count, "error") %> prohibited this institution from being saved:</h2>
+
+      <ul>
+      <% @institution.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+<%= fields_for(@institution_coursename) do |ab| %>
+  <div class="field">
+    <%= ab.label "All Coursename" %><br>
+    <%= collection_select(:coursename, :id, @all_coursename, :id, :name, {}, {:multiple => true}) %>
+  </div>
+<% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

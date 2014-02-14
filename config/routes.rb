@@ -1,19 +1,31 @@
 DadsVision::Application.routes.draw do
+  resources :coursenames
+
+  resources :institutions
+
   get "static_pages/home"
   get "static_pages/help"
   get "static_pages/about"
-
+ 
   get "employers/new"
   get "jobs/new"
-  resources :courses
-  root  'staticpages#home'
-
   
+ 
+  resources :users
+  resources :courses
+  resources :sessions, only: [:new, :create, :destroy]
+
+  root  "static_pages#home"
  
   get "courses/new"
   get "courses/input"
 
-  match '/signup', to: 'users#new', via: 'get'
+  match '/signup',   to: 'users#new',          via: 'get'
+  match '/signin',   to: 'sessions#new',       via: 'get'
+  match '/signout',  to: 'sessions#destroy',   via: 'delete'
+  match '/help',     to: 'static_pages#help',  via: 'get'
+  match '/about',    to: 'static_pages#about', via: 'get'
+
   
 
 

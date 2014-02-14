@@ -1,0 +1,27 @@
+<h1>Listing coursenames</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coursenames.each do |coursename| %>
+      <tr>
+        <td><%= coursename.name %></td>
+        <td><%= link_to 'Show', coursename %></td>
+        <td><%= link_to 'Edit', edit_coursename_path(coursename) %></td>
+        <td><%= link_to 'Destroy', coursename, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Coursename', new_coursename_path %>
