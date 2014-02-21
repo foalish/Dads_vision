@@ -1,4 +1,4 @@
-<h1>Listing coursenames</h1>
+<h1>List of the Course names</h1>
 
 <table>
   <thead>
@@ -11,7 +11,12 @@
   </thead>
 
   <tbody>
-    <% @coursenames.each do |coursename| %>
+<%= link_to 'New Coursename', new_coursename_path %>
+
+<%= alphabetical_paginate @alphaParams %>
+
+<div id="pagination_table">
+  <% Coursename.order("name").each do |coursename| %>
       <tr>
         <td><%= coursename.name %></td>
         <td><%= link_to 'Show', coursename %></td>
@@ -19,6 +24,7 @@
         <td><%= link_to 'Destroy', coursename, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+    </div>
   </tbody>
 </table>
 

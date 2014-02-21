@@ -5,6 +5,7 @@ class CoursenamesController < ApplicationController
   # GET /coursenames.json
   def index
     @coursenames = Coursename.all
+    @coursenames, @alphaParams = Coursename.all.alpha_paginate(params[:letter]){|coursename| coursename.name}
   end
 
   # GET /coursenames/1

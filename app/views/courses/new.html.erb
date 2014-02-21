@@ -10,11 +10,12 @@
 		
     <div class="field">
     <%= f.label :Institution %>
-    <%= collection_select(:coursename, :id, @all_institution, :id, :name, {},) %>
+    <%= collection_select(:coursename, :id, @all_institution.order("name"), :id, :name, {},) %>
     </div>
 
 	<%= f.label :Full_time_or_Part_time %>
-	<%= f.select :ftpt, options_for_select(%w[Full-time Part-time]) %>
+	<%= f.select(:ftpt, [["Full-time", "Full-time"], ["Part-time", "Part-time"]],
+			{},	 { :multiple => true, :size => 2}) %>
 
 	<%= f.label :Course_Duration %> 
 	<%= f.select :duration, options_for_select(%w[5-Years 3-Years 4-Years 2-Years 1-Year ]) %>
@@ -24,7 +25,7 @@
 	    
     <div class="field">
     <%= f.label :Course_name %>
-    <%= collection_select(:coursename, :id, @all_coursename, :id, :name, {},) %>
+    <%= collection_select(:coursename, :id, @all_coursename.order("name"), :id, :name, {},) %>
     </div>
 
     <%= f.label :Course_Code %>

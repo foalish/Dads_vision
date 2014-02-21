@@ -7,7 +7,8 @@ class CoursesController < ApplicationController
 
 def index
     @courses = Course.paginate(page: params[:page])
-  end
+    @coursenames, @alphaParams = Coursename.all.alpha_paginate(params[:letter]){|coursename| coursename.name}
+      end
 
 def show
      @course = Course.find(params[:id])
