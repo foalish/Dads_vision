@@ -1,7 +1,8 @@
 DadsVision::Application.routes.draw do
   resources :coursenames
-
   resources :institutions
+  resources :searches
+
 
   get "static_pages/home"
   get "static_pages/help"
@@ -10,6 +11,7 @@ DadsVision::Application.routes.draw do
   get "employers/new"
   get "jobs/new"
   
+  get '/img/:name', to: redirect {|params, req| "/assets/#{params[:name]}.#{params[:format]}" }
  
   resources :users
   resources :courses

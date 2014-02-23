@@ -1,0 +1,19 @@
+<h1>UNI COURSE </h1>
+
+<%= form_for @search do |f| %>
+  <div class="field">
+    <%= f.label :keywords %><br />
+    <%= f.text_field :keywords %>
+  </div>
+  <div class="field">
+    <%= f.label :institution_id %><br />
+    <%= f.collection_select :institution_id, Institution.order(:name), :id, :name, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :coursename_id %><br />
+    <%= f.collection_select :coursename_id, Coursename.order(:name), :id, :name, include_blank: true %>
+  </div>
+  
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
+

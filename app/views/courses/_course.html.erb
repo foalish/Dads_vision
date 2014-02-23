@@ -1,4 +1,10 @@
-<li>
+<div class="course">
+  <h2><%= link_to course.name, course %></h2>
+  <div class="details">
+       <% if course.category %>
+      | Category: <%= course.category.name %>
+    <% end %>
+  </div>
+</div>
 
 
-</li>

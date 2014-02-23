@@ -1,0 +1,19 @@
+@import "bootstrap";
+
+
+
+
+
+@mixin box_sizing {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body  {
+
+background-color:#F9F62F;
+/* image: url(images-path('owl.png'));
+background-image: url(/assets/images/owl.png); */
+}
+
