@@ -1,5 +1,5 @@
 class Coursename < ActiveRecord::Base
-	
+	#attr_accessible :name, :coursename_id
 
 	validates :name, :presence => true
 

@@ -10,23 +10,23 @@
 		
     <div class="field">  
     <%= f.label :Institution %>
-    <%= f.collection_select  :institution, Institution.order("name").all, :name, :name, :include_blank => false %>
+    <%= f.collection_select(:institution, :id, @all_institution.order("name"), :id, :name, {},) %>
     </div>
-
-    <div class="field">  
-    <%= f.label :Coursename %>
-    <%= f.collection_select  :coursename, Coursename.order("name").all, :name, :name,  :include_blank => false %>
-    </div>
-           
+    
 	<%= f.label :Full_time_or_Part_time %>
 	<%= f.select :ftpt, options_for_select(%w[Full-Time Part-Time]) %>
 
 	<%= f.label :Course_Duration %> 
-	<%= f.select :duration, options_for_select(%w[6-Years 5-Years 3-Years 4-Years 2-Years 1-Year Not-Specified ]) %>
+	<%= f.select :duration, options_for_select(%w[5-Years 3-Years 4-Years 2-Years 1-Year ]) %>
 	 
 	<%= f.label :Department %>
 	<%= f.text_field :dept %>
 	    
+    <div class="field">
+    <%= f.label :Course_name %>
+    <%= f.collection_select(:coursename, :id, @all_coursename.order("name"), :id, :name, {},) %>
+    </div>
+
     <%= f.label :Course_Code %>
 	<%= f.text_field :code %>
 
@@ -34,13 +34,7 @@
 	<%= f.text_field :description %>
 
 	<%= f.submit "ADD record", class: "btn btn-large btn-primary" %>
-
-<% end %>
-		</div>
+	
+	<% end %>	
 	</div>
-	
-
-	
-		
-	
-	
+	</div>

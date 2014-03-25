@@ -1,13 +1,13 @@
 <% provide(:title, @course.course) %>
 
-<h1>Course:  <%= @course.institution %> <%= @course.institutiontype %> <%= @course.course %>   (<%= @course.code %>)</h1>
+<h1>Course:  <%= @course.institution %> <%= @course.coursename %>  (<%= @course.code %>)</h1>
 
 <%= @course.institutiontype %>,
 <%= @course.institution %>, 
 <%= @course.ftpt %>,
 <%= @course.duration %>,
 <%= @course.dept %>,
-<%= @course.course %>,
+<%= @course.coursename %>,
 <%= @course.code %>, 
 <%= @course.description %>.
 

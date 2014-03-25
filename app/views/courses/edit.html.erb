@@ -1,35 +1,39 @@
-<% provide(:title, 'Edit course') %>
-<h1>Edit the course below</h1>
+<% provide(:title, 'Edit Course') %>
+<h1>Course EDIT page </h1>
 
 <div class="row">
 	<div class="span3 offset3">
 		<%= form_for(@course) do |f| %>
 
 	<%= f.label :Type_of_Institution %>
-	<%= f.text_field :institutiontype %>
-    
-	<%= f.label :Institution %>
-	<%= f.text_field :institution %>
+	<%= f.select :institutiontype, options_for_select(%w[University College]) %>
+		
+    <div class="field">  
+    <%= f.label :Institution %>
+    <%= f.collection_select  :institution, Institution.order("name").all, :name, :name, :include_blank => false %>
+    </div>
 
+    <div class="field">  
+    <%= f.label :Coursename %>
+    <%= f.collection_select  :coursename, Coursename.order("name").all, :name, :name,  :include_blank => false %>
+    </div>
+           
 	<%= f.label :Full_time_or_Part_time %>
-	<%= f.password_field :ftpt %>
+	<%= f.select :ftpt, options_for_select(%w[Full-Time Part-Time]) %>
 
-	<%= f.label :Course_Duration %>   
-	<%= f.password_field :duration %>  
-
+	<%= f.label :Course_Duration %> 
+	<%= f.select :duration, options_for_select(%w[6-Years 5-Years 3-Years 4-Years 2-Years 1-Year Not-Specified ]) %>
+	 
 	<%= f.label :Department %>
 	<%= f.text_field :dept %>
-
-	<%= f.label :Course_name %>
-	<%= f.text_field :course %>
-
-	<%= f.label :Course_Code %>
-	<%= f.password_field :code %>
+	    
+    <%= f.label :Course_Code %>
+	<%= f.text_field :code %>
 
 	<%= f.label :Course_Description %>
-	<%= f.password_field :description %>
+	<%= f.text_field :description %>
 
-	<%= f.submit "ADD record", class: "btn btn-large btn-primary" %>
+	<%= f.submit "SAVE the changes", class: "btn btn-large btn-primary" %>
 		<% end %>
 	</div>
 </div>

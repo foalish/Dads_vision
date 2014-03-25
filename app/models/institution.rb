@@ -1,5 +1,5 @@
 class Institution < ActiveRecord::Base
- #attr_accessible :name
+ #attr_accessible :name, :institution_id
 
 validates :name, :presence => true
 

@@ -4,7 +4,6 @@ class CoursesController < ApplicationController
   before_action :admin_user,      only: [:index, :edit, :update, :destroy]
 
 
-
 def index
     @courses = Course.paginate(page: params[:page])
     @coursenames, @alphaParams = Coursename.all.alpha_paginate(params[:letter]){|coursename| coursename.name}
@@ -18,7 +17,10 @@ def input
   end
 
 def new
+    
     @course = Course.new
+    @coursename = Coursename.new
+    @institution = Institution.new
 
     @all_coursename = Coursename.all
 
@@ -26,6 +28,7 @@ def new
   end
 
 def create
+    
   @course = Course.new(user_params)
   if @course.save
    #sign_in @course
@@ -59,7 +62,7 @@ end
 private
   def user_params
     params.require(:course).permit(:institutiontype, :institution, :ftpt,
-          :duration, :dept, :course, :code, :description)
+          :duration, :dept, :coursename, :code, :description)
   end
 
 # Before filters
