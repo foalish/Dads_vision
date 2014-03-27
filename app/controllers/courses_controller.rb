@@ -10,8 +10,9 @@ def index
       end
 
 def show
-     @course = Course.find(params[:id])
-  end
+    @course = Course.find(params[:id])
+
+end
 
 def input
   end
@@ -43,7 +44,7 @@ def edit
   end
 
 def update
-if @course.update_attributes(user_params)
+if @course.update_attributes(course_params)
 flash[:success] = "Course updated"
 redirect_to @course
 else

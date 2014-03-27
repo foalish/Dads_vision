@@ -1,13 +1,37 @@
-<% provide(:title, 'All courses') %>
-<h1>All courses</h1>
+<h1>Course List</h1>
 
-<%= will_paginate %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
-<ul class="courses">
-	<%= render @courses %>
-</ul>
+  <tbody>
+<%= link_to 'New Course', new_course_path %>
 
-<%= will_paginate %>
+<%= alphabetical_paginate @alphaParams %>
+
+<div id="pagination_table">
+  <% Course.order("coursename").each do |course_id| %>
+      <tr>
+        <td><%= coursename.id %></td>
+        <td><%= link_to 'Show', course %></td>
+        <td><%= link_to 'Edit', edit_coursename_path(coursename) %></td>
+        <td><%= link_to 'Destroy', coursename, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </div>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Course', new_course_path %>
+
 
 
 
