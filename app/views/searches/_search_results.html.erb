@@ -1,0 +1,5 @@
+<ul>
+    <% @jobcatagories.each do |grant| %>
+  <li><%= link_to jobcategory.title, :action => 'show', :id => jobcategory.id  %></li>
+  <% end %>
+  </ul>

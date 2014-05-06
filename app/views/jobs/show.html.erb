@@ -1,6 +1,23 @@
-<% provide(:title, @job.job) %>
 
-<h1>Job ID :   <%= @job.id %></h1>
 
-<%= @job.category %>, <%= @job.sub_category %>, <%= @job.title %>.
+<h1>Career: <%= @job.jobcategory %> </h1>
 
+<p><strong><%= @job.description %>   </strong></p>
+
+
+
+<h6>Qualifications Required</h6>
+
+<p>Degree:  <strong><%= @job.coursename %></strong></p>
+<p>Alevels: <strong><%= @job.alevel %>    </strong></p>
+<p>GCSE's:  <strong><%= @job.gcse %>      </strong></p>
+
+
+<h6>_____________________________________________________________________</h6>
+
+<h6>Institution</h6>
+
+<p>Institution:  <strong><%= @job.institution %>       (<%= @job.duration %>)</strong></p>
+<p>Applicants: <strong><%= @job.applicant %>    </strong>
+Places:  <strong><%= @job.place %>      </strong></p>
+<p>Previous Work Experience Required:  <strong><%= @job.workexp %>      </strong></p>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140225195046) do
+ActiveRecord::Schema.define(version: 20140416164919) do
 
   create_table "coursenames", force: true do |t|
     t.string   "name",       null: false
@@ -55,6 +55,12 @@ ActiveRecord::Schema.define(version: 20140225195046) do
     t.datetime "updated_at"
   end
 
+  create_table "jobcategories", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "jobs", force: true do |t|
     t.string   "category"
     t.string   "type"
@@ -62,7 +68,27 @@ ActiveRecord::Schema.define(version: 20140225195046) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "sub_category"
+    t.text     "description"
+    t.string   "jobcategory"
+    t.string   "institution"
+    t.string   "alevel"
+    t.string   "gcse"
+    t.string   "coursename"
+    t.string   "duration"
+    t.string   "applicant"
+    t.string   "place"
+    t.string   "workexp"
+    t.string   "ftpt"
   end
+
+  create_table "microposts", force: true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
 
   create_table "searches", force: true do |t|
     t.string   "keywords"
@@ -70,6 +96,7 @@ ActiveRecord::Schema.define(version: 20140225195046) do
     t.integer  "coursename_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "jobcategory"
   end
 
   create_table "users", force: true do |t|

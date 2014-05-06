@@ -1,10 +1,11 @@
-<div class="course">
-  <h2><%= link_to course.name, course %></h2>
-  <div class="details">
-       <% if course.category %>
-      | Category: <%= course.category.name %>
-    <% end %>
-  </div>
-</div>
+<li>
+
+<%= link_to course.coursename, course %>
+<%= link_to course.institution, course %>
+<%= link_to course.id, course %>
+
+<%= link_to "delete", course, method: :delete, data: { confirm: "Are You sure?" } %>
+
+</li>
 
 

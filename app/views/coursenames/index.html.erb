@@ -1,24 +1,28 @@
-<h1>List of the Course names</h1>
+<h3><h align="left"><strong>Course Names </h3>
+
+
+<%= form_tag coursenames_path, :method => 'get' do %>
+    <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+    </p>
+  <% end %>
+
+<% for coursename in @coursenames %>
+  <%= link_to coursename.name, new_coursename_path(coursename) %>
+<% end %>
 
 <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
+    <tbody>
+    <p>
 <%= link_to 'New Coursename', new_coursename_path %>
-
-<%= alphabetical_paginate @alphaParams %>
+    </p>
 
 <div id="pagination_table">
   <% Coursename.order("name").each do |coursename| %>
       <tr>
         <td><%= coursename.name %></td>
+        <td><%= coursename.id %></td>
         <td><%= link_to 'Show', coursename %></td>
         <td><%= link_to 'Edit', edit_coursename_path(coursename) %></td>
         <td><%= link_to 'Destroy', coursename, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,8 +30,9 @@
     <% end %>
     </div>
   </tbody>
-</table>
+  </table>
+
 
 <br>
 
-<%= link_to 'New Coursename', new_coursename_path %>
+

@@ -1,10 +1,9 @@
-<h1>Course List</h1>
+<% provide(:title, 'All courses') %>
+<h1>List of Courses</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -13,25 +12,28 @@
   <tbody>
 <%= link_to 'New Course', new_course_path %>
 
+
+
 <%= alphabetical_paginate @alphaParams %>
 
 <div id="pagination_table">
-  <% Course.order("coursename").each do |course_id| %>
+  <% Course.order("coursename").each do |course| %>
       <tr>
-        <td><%= coursename.id %></td>
-        <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_coursename_path(coursename) %></td>
-        <td><%= link_to 'Destroy', coursename, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= course.coursename %></td>
+        <td><%= course.code %></td>
+        <td><%= course.description %></td>
+        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     </div>
   </tbody>
 </table>
 
+<
+   
 <br>
 
 <%= link_to 'New Course', new_course_path %>
-
 
 
 

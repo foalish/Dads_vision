@@ -1,0 +1,36 @@
+<h3><h align="left"><strong>Job Categories </h3>
+
+<%= form_tag jobcategories_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search]  %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<% for jobcategory in @jobcategories %>
+  <%= link_to jobcategory.name, new_jobcategory_path(jobcategory) %>
+<% end %>
+  
+<table>
+    <tbody>
+    <p>
+<%= link_to 'New Jobcategory', new_jobcategory_path %>
+    </p>
+
+<div id="pagination_table">
+  <% Jobcategory.order("name").each do |jobcategory| %>
+      <tr>
+        <td><%= jobcategory.name %></td>
+        <td><%= jobcategory.id %></td>
+        <td><%= link_to 'Show', jobcategory %></td>
+        <td><%= link_to 'Edit', edit_jobcategory_path(jobcategory) %></td>
+        <td><%= link_to 'Destroy', jobcategory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </div>
+  </tbody>
+  </table>
+
+
+<br>
+

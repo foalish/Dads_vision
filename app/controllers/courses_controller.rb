@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
-  before_action :signed_in_user,    only: [:index, :edit, :update, :destroy]
-  before_action :correct_user,      only: [:edit, :update]
-  before_action :admin_user,      only: [:index, :edit, :update, :destroy]
+  #before_action :signed_in_user,    only: [:index, :edit, :update, :destroy]
+  #before_action :correct_user,      only: [:edit, :update, :destroy]
+  #before_action :admin_user,      only: [:index, :edit, :update, :destroy]
 
 
 def index
@@ -11,26 +11,21 @@ def index
 
 def show
     @course = Course.find(params[:id])
-
 end
 
 def input
   end
 
 def new
-    
     @course = Course.new
     @coursename = Coursename.new
     @institution = Institution.new
-
     @all_coursename = Coursename.all
-
     @all_institution = Institution.all
   end
 
 def create
-    
-  @course = Course.new(user_params)
+     @course = Course.new(course_params)
   if @course.save
    #sign_in @course
     flash[:success] = "New Course Added!"
@@ -41,10 +36,12 @@ def create
 
 def edit
   @course = Course.find(params[:id])
-  end
+  
+end
 
 def update
-if @course.update_attributes(course_params)
+  @course = Course.find(params[:id])
+ if @course.update_attributes(course_params)
 flash[:success] = "Course updated"
 redirect_to @course
 else
@@ -53,15 +50,16 @@ end
 end
 
 def destroy
-Course.find(params[:id]).destroy
+#Course.find(params[:id]).destroy
+@course.destroy
 flash[:success] = "Course deleted."
-redirect_to users_url
+redirect_to course_url
   end
 end
     
 
 private
-  def user_params
+  def course_params
     params.require(:course).permit(:institutiontype, :institution, :ftpt,
           :duration, :dept, :coursename, :code, :description)
   end
@@ -75,12 +73,13 @@ def signed_in_user
   end
 end
 
-def correct_user
-#  @user = User.find(params[:id])
- # redirect_to(root_url) unless current_user?(@user)
+def correct_course
+ # @course = Course.find(params[:id])
+  #redirect_to(root_url) unless current_user?(@user)
   end
 
+
 def admin_user
-redirect_to(root_url) unless current_user.admin?
+#redirect_to(root_url) unless current_user.admin?
   end
 end

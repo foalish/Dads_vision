@@ -1,17 +1,27 @@
 class CoursenamesController < ApplicationController
-  before_action :set_coursename, only: [:show, :edit, :update, :destroy]
+  #before_action :set_coursename, only: [:show, :edit, :update, :destroy]
 
   # GET /coursenames
   # GET /coursenames.json
   def index
-    @coursenames = Coursename.all
-    @coursenames, @alphaParams = Coursename.all.alpha_paginate(params[:letter]){|coursename| coursename.name}
+    if params[:search]
+      @coursenames = Coursename.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"])
+    else  
+      @coursenames = Coursename.find(:all)
+   # @coursenames = Coursename.all
+   # @coursenames, @alphaParams = Coursename.all.alpha_paginate(params[:letter]){|coursename| coursename.name}
   end
+end
 
   # GET /coursenames/1
   # GET /coursenames/1.json
   def show
+    @coursename = Coursename.find(params[:id])
   end
+
+  #def search
+  #@coursename = Coursename.find(params[:search])
+  #end
 
   # GET /coursenames/new
   def new
@@ -20,6 +30,7 @@ class CoursenamesController < ApplicationController
 
   # GET /coursenames/1/edit
   def edit
+    @coursename = Coursename.find(params[:id])
   end
 
   # POST /coursenames
@@ -41,6 +52,8 @@ class CoursenamesController < ApplicationController
   # PATCH/PUT /coursenames/1
   # PATCH/PUT /coursenames/1.json
   def update
+    @coursename = Coursename.find(params[:id])
+    
     respond_to do |format|
       if @coursename.update(coursename_params)
         format.html { redirect_to @coursename, notice: 'Coursename was successfully updated.' }

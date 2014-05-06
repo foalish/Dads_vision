@@ -1,27 +1,33 @@
 DadsVision::Application.routes.draw do
+  resources :jobcategories
   resources :coursenames
   resources :institutions
   resources :searches
+  resources :courses
+  resources :jobs
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :microposts, only: [:create, :destroy]
+ 
 
-
+  get "/jobs/search/:search" => "jobs#search", :as => :jobs_search
+  get "/jobcategories/search/:search" => "jobcategories#search", :as => :jobcategories_search
+  get "jobcategories/index"
+  get "jobs/index"
   get "static_pages/home"
   get "static_pages/help"
   get "static_pages/about"
- 
   get "employers/new"
   get "jobs/new"
+  get "courses/new"
+  get "courses/input"
+  
   
   get '/img/:name', to: redirect {|params, req| "/assets/#{params[:name]}.#{params[:format]}" }
  
-  resources :users
-  resources :courses
-  resources :sessions, only: [:new, :create, :destroy]
-
   root  "static_pages#home"
  
-  get "courses/new"
-  get "courses/input"
-
+ 
   match '/signup',   to: 'users#new',          via: 'get'
   match '/signin',   to: 'sessions#new',       via: 'get'
   match '/signout',  to: 'sessions#destroy',   via: 'delete'
