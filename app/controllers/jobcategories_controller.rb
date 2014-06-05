@@ -30,7 +30,7 @@ end
     @jobcategory = Jobcategory.new(jobcategory_params)
     respond_to do |format|
       if @jobcategory.save
-        format.html { redirect_to @jobcategory, notice: 'Jobcategory was successfully created.' }
+        format.html { redirect_to @jobcategory, notice: 'Jobcategory was successfully CREATED.' }
         format.json { render action: 'show', status: :created, location: @jobcategory }
       else
         format.html { render action: 'new' }
@@ -46,7 +46,7 @@ end
     
     respond_to do |format|
       if @jobcategory.update(jobcategory_params)
-        format.html { redirect_to @jobcategory, notice: 'Jobcategory was successfully updated.' }
+        format.html { redirect_to @jobcategory, notice: 'Jobcategory was successfully UPDATED.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -58,9 +58,10 @@ end
   # DELETE /jobcategories/1
   # DELETE /jobcategories/1.json
   def destroy
+    @jobcategory = Jobcategory.find(params[:id])
     @jobcategory.destroy
     respond_to do |format|
-      format.html { redirect_to jobcategorys_url }
+      format.html { redirect_to jobcategories_url, notice: 'Your Jobcategory was successfully DELETED.' }
       format.json { head :no_content }
     end
   end

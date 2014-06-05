@@ -4,7 +4,11 @@ class SearchesController < ApplicationController
   # GET /jobcategories
   # GET /jobcategories.json
   def index
-    
+     if params[:search]
+     @jobcategories = Jobcategory.find(:all, :conditions => ['name LIKE ?', "%#{params[:search_text]}%"])
+    else  
+     @jobcategories = Jobcategory.find(:all)
+end
 end
 
   # GET /jobcategories/1

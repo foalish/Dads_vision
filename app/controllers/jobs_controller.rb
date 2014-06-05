@@ -4,15 +4,17 @@ class JobsController < ApplicationController
   end
 
   def show
-     @job = Job.find(params[:id])
-  end
+    @job = Job.find(params[:id])
+    end
+
 
 def search
-  @jobs = Jobcategory.search params[:search]
+  @jobs = Job.search params[:search]
+  @job = Job.find(params[:id])
 end
 
   def new
-  	@job = Job.new
+  @job = Job.new
   end
 
  def index
@@ -26,7 +28,8 @@ end
  end
 
   def create
-     @job = Job.new(job_params)
+
+  @job = Job.new job_params 
   if @job.save
       flash[:success] = "New Job Added!"
     redirect_to @job
@@ -34,6 +37,7 @@ end
   render 'new'
   end
 
+ 
 def edit
   @job = Job.find(params[:id])
  end
@@ -52,10 +56,13 @@ end
 
 def destroy
 Job.find(params[:id]).destroy
-@job.destroy
-flash[:success] = "Job deleted."
-redirect_to job_url
+ @job = Job.find(params[:id])
+    @job.destroy
+    respond_to do |format|
+      format.html { redirect_to job_url, notice: 'Job was successfully DELETED.' }
+      format.json { head :no_content }
   end
+end
 end
 
 private

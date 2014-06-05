@@ -1,7 +1,7 @@
 class Job < ActiveRecord::Base
 
-def self.search(query)
-		where("jobcategory like ?", "%#{query}%")
-	end
+def self.search(search)
+	search_condition = "%" + search + "%"
+	find(:all, :conditions => ['jobcategory LIKE ?', search_condition])
 end
-
+end

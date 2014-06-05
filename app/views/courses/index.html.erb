@@ -19,9 +19,13 @@
 <div id="pagination_table">
   <% Course.order("coursename").each do |course| %>
       <tr>
+        <td><%= course.id %></td>
         <td><%= course.coursename %></td>
+        <td><%= course.duration %></td>
         <td><%= course.code %></td>
+        <td><%= course.institutiontype %></td>
         <td><%= course.description %></td>
+        <td><%= link_to 'Show', course, method: :show, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

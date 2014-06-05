@@ -14,6 +14,7 @@ DadsVision::Application.routes.draw do
   get "/jobcategories/search/:search" => "jobcategories#search", :as => :jobcategories_search
   get "jobcategories/index"
   get "jobs/index"
+  get "jobs/search"
   get "static_pages/home"
   get "static_pages/help"
   get "static_pages/about"
@@ -21,6 +22,8 @@ DadsVision::Application.routes.draw do
   get "jobs/new"
   get "courses/new"
   get "courses/input"
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "destroy" => "jobs#destroy", :as => "destroy"
   
   
   get '/img/:name', to: redirect {|params, req| "/assets/#{params[:name]}.#{params[:format]}" }
@@ -33,6 +36,7 @@ DadsVision::Application.routes.draw do
   match '/signout',  to: 'sessions#destroy',   via: 'delete'
   match '/help',     to: 'static_pages#help',  via: 'get'
   match '/about',    to: 'static_pages#about', via: 'get'
+  match '/search',    to: 'jobs#search', via: 'get'
 
   
 

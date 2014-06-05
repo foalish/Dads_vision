@@ -25,7 +25,7 @@ def new
   end
 
 def create
-     @course = Course.new(course_params)
+     @course = Course.new course_params
   if @course.save
    #sign_in @course
     flash[:success] = "New Course Added!"
@@ -50,7 +50,7 @@ end
 end
 
 def destroy
-#Course.find(params[:id]).destroy
+Course.find(params[:id]).destroy
 @course.destroy
 flash[:success] = "Course deleted."
 redirect_to course_url
@@ -67,9 +67,9 @@ private
 # Before filters
 
 def signed_in_user
-  unless signed_in?
-  store_location
-  redirect_to signin_url, notice: "Please sign in." 
+  #unless signed_in?
+  #store_location
+  #redirect_to signin_url, notice: "Please sign in." 
   end
 end
 
@@ -82,4 +82,4 @@ def correct_course
 def admin_user
 #redirect_to(root_url) unless current_user.admin?
   end
-end
+
