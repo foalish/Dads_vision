@@ -12,6 +12,7 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'alphabetical_paginate'
 
+gem 'mobile-fu'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.1'

@@ -1,5 +1,8 @@
 class JobsController < ApplicationController
- 
+  has_mobile_fu
+  
+
+
    def input
   end
 
