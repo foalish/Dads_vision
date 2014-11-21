@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  has_mobile_fu
+ # has_mobile_fu
   
 
 

@@ -1,5 +1,12 @@
 DadsVision::Application.routes.draw do
-  resources :jobcategories
+ # namespace :api, path: '/', defaults: {format: 'json'} do
+  #   namespace :v1 do
+   #   constraints subdomain: 'api' do
+    #  resources :jobcategories
+ #   end 
+ # end
+#end
+
   resources :coursenames
   resources :institutions
   resources :searches
