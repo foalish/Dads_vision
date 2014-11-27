@@ -5,9 +5,11 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
+  encoding: UTF-8
   database: david_database_development
   username: david
-  password:
+  password: chocolate100 
+  host: localhost
   pool: 5
   timeout: 5000
 
@@ -16,12 +18,18 @@ development:
 # Do not set this db to the same as development or production.
 test:
   adapter: postgresql
+  encoding: unicode
   database: david_database_test
+  username: david
+  password: chocolate100
   pool: 5
   timeout: 5000
 
 production:
   adapter: postgresql
+  encoding: unicode
   database: david_database_production
+  username: david
+  password: chocolate100
   pool: 5
   timeout: 5000

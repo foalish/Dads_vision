@@ -13,24 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20140416164919) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "coursenames", force: true do |t|
     t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "courses", force: true do |t|
-    t.string   "institutiontype"
-    t.string   "institution"
-    t.string   "ftpt"
-    t.string   "duration"
-    t.string   "dept"
-    t.string   "course"
-    t.string   "code"
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "coursename"
   end
 
   create_table "employers", force: true do |t|
@@ -55,32 +44,6 @@ ActiveRecord::Schema.define(version: 20140416164919) do
     t.datetime "updated_at"
   end
 
-  create_table "jobcategories", force: true do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "jobs", force: true do |t|
-    t.string   "category"
-    t.string   "type"
-    t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "sub_category"
-    t.text     "description"
-    t.string   "jobcategory"
-    t.string   "institution"
-    t.string   "alevel"
-    t.string   "gcse"
-    t.string   "coursename"
-    t.string   "duration"
-    t.string   "applicant"
-    t.string   "place"
-    t.string   "workexp"
-    t.string   "ftpt"
-  end
-
   create_table "microposts", force: true do |t|
     t.string   "content"
     t.integer  "user_id"
@@ -88,7 +51,7 @@ ActiveRecord::Schema.define(version: 20140416164919) do
     t.datetime "updated_at"
   end
 
-  add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
+  add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at", using: :btree
 
   create_table "searches", force: true do |t|
     t.string   "keywords"
@@ -109,7 +72,7 @@ ActiveRecord::Schema.define(version: 20140416164919) do
     t.boolean  "admin",           default: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end
